@@ -40,7 +40,8 @@ $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
     var trainName = $("#train-name-input").val().trim();
     var trainDest = $("#destination-input").val().trim();
-    var trainFirst = moment($("#first-train-input").val().trim(), "hh:mm").format("X");
+    // var trainFirst = moment($("#first-train-input").val().trim(), "hh:mm").format("X");
+    var trainFirst = $("#first-train-input").val().trim();
     var trainFreq = $("#frequency-input").val().trim();
 
     var newTrain = {
@@ -84,18 +85,37 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
     //*********MATH STUFF**************
 
-    // Calculate the months worked using hardcore math
-    // To calculate the months worked
-    // var empMonths = moment().diff(moment.unix(empStart, "X"), "months");
-    // console.log(empMonths);
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var trainFirstConverted = moment(trainFirst, "hh:mm").subtract(1, "years");
+    console.log(trainFirstConverted);
 
-    // Calculate the total billed rate
-    // var empBilled = empMonths * empRate;
-    // console.log(empBilled);
+        // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+
+    // Difference between the times
+    var diffTime = moment().diff(moment(trainFirstConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+
+       // Time apart (remainder)
+    var tRemainder = diffTime % trainFreq;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    var tMinutesTillTrain = trainFreq - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    var nextTrainPretty = moment(nextTrain).format("hh:mm");
+
 
     //*********MATH STUFF**************
 
     $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" +
-        trainFreq + "</td><td>" + "Next Arrival calc" + "</td><td>" + "Min Away calc" + "</td></tr>");
+        trainFreq + "</td><td>" + nextTrainPretty + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 });
