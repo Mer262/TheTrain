@@ -21,14 +21,81 @@
 
 
 
-  // Initialize Firebase
+// Initialize Firebase
 
-  
-  var config = {
+
+var config = {
     apiKey: "AIzaSyDtE46FTz52al8F_bIM5ebXr37uMGpFy9Y",
     authDomain: "trainscheduling-414ff.firebaseapp.com",
     databaseURL: "https://trainscheduling-414ff.firebaseio.com",
     storageBucket: "trainscheduling-414ff.appspot.com",
     messagingSenderId: "512376492757"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+// Button to add a train
+$("#add-train-btn").on("click", function(event) {
+    event.preventDefault();
+    var trainName = $("#train-name-input").val().trim();
+    var trainDest = $("#destination-input").val().trim();
+    var trainFirst = moment($("#first-train-input").val().trim(), "hh:mm").format("X");
+    var trainFreq = $("#frequency-input").val().trim();
+
+    var newTrain = {
+        name: trainName,
+        destination: trainDest,
+        first: trainFirst,
+        frequency: trainFreq
+    };
+    database.ref().push(newTrain);
+
+    console.log(newTrain.name);
+    console.log(newTrain.destination);
+    console.log(newTrain.first);
+    console.log(newTrain.frequency);
+
+    // Clears all of the text-boxes
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-input").val("");
+    $("#frequency-input").val("");
+
+    // Prevents moving to new page
+    return false;
+});
+
+
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+    // Store everything into a variable.
+    var trainName = childSnapshot.val().name;
+    var trainDest = childSnapshot.val().destination;
+    var trainFirst = childSnapshot.val().first;
+    var trainFreq = childSnapshot.val().frequency;
+
+    // Employee Info
+    console.log(trainName);
+    console.log(trainDest);
+    console.log(trainFirst);
+    console.log(trainFreq);
+
+    var trainFirstPretty = moment.unix(trainFirst).format("hh:mm");
+
+    //*********MATH STUFF**************
+
+    // Calculate the months worked using hardcore math
+    // To calculate the months worked
+    // var empMonths = moment().diff(moment.unix(empStart, "X"), "months");
+    // console.log(empMonths);
+
+    // Calculate the total billed rate
+    // var empBilled = empMonths * empRate;
+    // console.log(empBilled);
+
+    //*********MATH STUFF**************
+
+    $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" +
+        trainFreq + "</td><td>" + "Next Arrival calc" + "</td><td>" + "Min Away calc" + "</td></tr>");
+
+});
