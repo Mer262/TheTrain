@@ -1,0 +1,103 @@
+/*font-family: 'Bungee Shade', cursive;
+font-family: 'Russo One', sans-serif;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Freckle Face', cursive;
+font-family: 'Love Ya Like A Sister', cursive;*/
+
+body {
+	background-color: #AFD658;
+	color: #DE560A;
+	/*font-family: 'Eater', cursive;*/
+	/*letter-spacing: 1.5px;*/
+}
+
+.jumbotron {
+   background: #DE560A; 
+   /*background: url("../images/dino-train.png");*/
+   color: white;
+   padding: 10px;
+   /*height: 100px;*/
+   margin-top: 50px;
+   margin-bottom: 100px;
+}
+
+#dino-row {
+	/*background: url("../images/dino-train.png");*/
+	height: 30px;
+}
+
+#top-container {
+	background: url("../images/dino-train.png");
+	/*height: 200px;*/
+	padding-right: 0;
+	padding-left: 0;
+
+}
+
+h1 {
+	margin: 0;
+	font-family: 'Love Ya Like A Sister', cursive;
+}
+
+h3 {
+	font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.table {
+	border-top-color: #AFD658;
+	border-bottom-color: #AFD658;
+}
+
+
+#dino-panel {
+	background-color: #DE560A;
+	border-color: #DE560A;
+}
+
+.dino-border {
+	border-color: #DE560A;
+}
+
+.panel-heading {
+	border-color: #DE560A;
+}
+
+#add-train-btn {
+	background-color: #DE560A;
+	border-color: #DE560A;
+}
+
+
+
+.form-control {
+	border-color: #AFD658;
+}
+
+#train-table {
+	border-color: #AFD658;
+}
+
+.table>thead>tr>th {
+	border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #AFD658;
+}
+
+thead {
+	border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #AFD658;
+}
+
+tr {
+	border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #AFD658;
+}
+
+th {
+	border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #AFD658;
+    font-weight: bold;
+}

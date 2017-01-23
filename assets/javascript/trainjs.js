@@ -101,7 +101,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
        // Time apart (remainder)
     var tRemainder = diffTime % trainFreq;
-    console.log(tRemainder);
+    console.log("tRemainder: " + tRemainder);
 
     // Minute Until Train
     var tMinutesTillTrain = trainFreq - tRemainder;

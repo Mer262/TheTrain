@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Bangers|Chewy|Freckle+Face" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Freckle+Face|Love+Ya+Like+A+Sister|Luckiest+Guy|Russo+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
@@ -15,15 +15,19 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">Train Schedules</h1>
-            <h3 class="text-center">We're here to help you pretend that Charlotte has a robust public transit system.</h3>
+    <div class="container-fluid" id="top-container">
+       
+        <div class="row" id="dino-row"></div>
+        <!-- <img src="assets/images/dinosaur-trainResize.jpg" alt="dinosaur train logo"> -->
+           <div class="jumbotron"><h1 class="text-center">The Dinosaur Train Schedule</h1></div>
+           <!-- <div class="row" id="dino-row"></div> -->
+        
         </div>
+        <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+                <div class="panel panel-primary dino-border">
+                    <div class="panel-heading dino-border" id="dino-panel">
                         <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
                     </div>
                     <div class="panel-body">
@@ -42,8 +46,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+                <div class="panel panel-primary dino-border">
+                    <div class="panel-heading dino-border" id="dino-panel">
                         <h3 class="panel-title"><strong>Add Train</strong></h3>
                     </div>
                     <div class="panel-body">
@@ -64,13 +68,14 @@
                                 <label for="frequency-input">Frequency (min)</label>
                                 <input class="form-control" id="frequency-input" type="text">
                             </div>
-                            <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
+                            <button class="btn btn-primary dino-border" id="add-train-btn" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container-fluid"><img src="assets/images/dino_image_group1.png" alt="dinosaur characters" class="center-block"></div>
     <script src="assets/javascript/trainjs.js"></script>
 </body>
 
